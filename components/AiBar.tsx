@@ -63,10 +63,16 @@ export default function AiBar() {
       const decoder = new TextDecoder();
       if (!reader) return;
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        setResponse(prev => prev + decoder.decode(value, { stream: true }));
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          setResponse(prev => prev + decoder.decode(value, { stream: true }));
+        }
+      } catch (e) {
+        setResponse(e instanceof Error ? `Error: ${e.message}` : 'Request failed');
+      } finally {
+        reader.cancel().catch(() => {});
       }
     } catch (e) {
       setResponse(e instanceof Error ? `Error: ${e.message}` : 'Request failed');

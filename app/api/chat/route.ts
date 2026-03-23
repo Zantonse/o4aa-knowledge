@@ -39,23 +39,25 @@ export async function POST(req: NextRequest): Promise<Response> {
     return new Response('Invalid JSON', { status: 400 });
   }
 
-  const { question, sectionSlug, sectionContent = '', sources = [] } = body;
+  const { question, sectionSlug, sectionContent = '', sources } = body;
   if (!question?.trim()) {
     return new Response('question is required', { status: 400 });
   }
+  const safeSources = Array.isArray(sources) ? sources : [];
+  const safeContent = (sectionContent ?? '').slice(0, 6000);
 
   let contextBlocks = '';
-  if (sectionContent) {
-    contextBlocks += `\n\n## Active Section: ${sectionSlug ?? 'unknown'}\n${sectionContent}`;
+  if (safeContent) {
+    contextBlocks += `\n\n## Active Section: ${sectionSlug ?? 'unknown'}\n${safeContent}`;
   }
 
   const firecrawlKey = process.env.FIRECRAWL_API_KEY ?? '';
   if (firecrawlKey) {
     const [devDocs, helpDocs] = await Promise.all([
-      sources.includes('dev-docs')
+      safeSources.includes('dev-docs')
         ? fetchFirecrawlDocs(question, 'developer.okta.com', firecrawlKey)
         : Promise.resolve(''),
-      sources.includes('help-docs')
+      safeSources.includes('help-docs')
         ? fetchFirecrawlDocs(question, 'help.okta.com', firecrawlKey)
         : Promise.resolve(''),
     ]);
