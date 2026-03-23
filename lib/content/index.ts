@@ -4,6 +4,8 @@ import { content as agentIdentity } from './agent-identity';
 import { content as o4aaProducts } from './o4aa-products';
 import { content as mcpAdapter } from './mcp-adapter';
 import { content as mcpBridge } from './mcp-bridge';
+import { content as oboFlow } from './obo-flow';
+import { content as idJag } from './id-jag';
 
 export const CONTENT_MAP: Record<string, SectionContent> = {
   'ai-agents-101': aiAgents101,
@@ -11,5 +13,7 @@ export const CONTENT_MAP: Record<string, SectionContent> = {
   'o4aa-products': o4aaProducts,
   'mcp-adapter': mcpAdapter,
   'mcp-bridge': mcpBridge,
-  // Additional sections added in Tasks 5–6
+  'obo-flow': oboFlow,
+  'id-jag': idJag,
+  // Additional sections added in Task 6
 };
