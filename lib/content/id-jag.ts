@@ -9,7 +9,7 @@ export const content: SectionContent = {
   icon: '🪪',
   hasDiagram: true,
   diagramPrompt:
-    'Horizontal chain diagram (left to right): Human User box → AI Orchestrator box → Sub-Agent box → API Server box. Above each arrow: small "identity assertion" label. At the API Server, a vertical list showing the full chain: "Delegated by: user@company.com → Orchestrator v2 → Sub-Agent search". Identity verification checkpoint shown between Sub-Agent and API. Warm amber/cream palette, clean flat technical style.',
+    'Four boxes in a horizontal row labeled User, Orchestrator, Agent, Server. Arrows between boxes labeled assertion. A verification checkpoint between Agent and Server boxes. Warm amber and cream palette, clean flat technical diagram style, white background.',
   cards: [
     {
       heading: 'What is ID-JAG?',

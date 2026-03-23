@@ -9,7 +9,7 @@ export const content: SectionContent = {
   icon: '🔌',
   hasDiagram: true,
   diagramPrompt:
-    'Horizontal flow diagram (left to right): AI Agent box → MCP Client box → [Auth Adapter box, highlighted with amber border, centered] → MCP Server box → Protected API box. Downward arrows from Auth Adapter to: "Scoped Token" label, "Access Decision" label, "Audit Log" label. Warm cream background, flat technical style, amber accent on Auth Adapter box.',
+    'Simple technical flow diagram: five boxes in a row labeled Agent, Client, Adapter, Server, API. Amber-highlighted center box. Three process labels below the center box: Token, Decision, Log. Warm cream background, flat minimal illustration style.',
   cards: [
     {
       heading: 'What is the MCP Adapter?',
