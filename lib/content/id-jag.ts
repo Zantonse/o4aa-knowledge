@@ -9,7 +9,7 @@ export const content: SectionContent = {
   icon: '🪪',
   hasDiagram: true,
   diagramPrompt:
-    'Horizontal chain diagram (left to right): Human User box → AI Orchestrator box → Sub-Agent box → API Server box. Above each arrow: small "identity assertion" label. At the API Server, a vertical list showing the full chain: "Delegated by: user@company.com → Orchestrator v2 → Sub-Agent search". Okta icon at verification checkpoint between Sub-Agent and API. Warm amber/cream palette, clean flat technical style.',
+    'Horizontal chain diagram (left to right): Human User box → AI Orchestrator box → Sub-Agent box → API Server box. Above each arrow: small "identity assertion" label. At the API Server, a vertical list showing the full chain: "Delegated by: user@company.com → Orchestrator v2 → Sub-Agent search". Identity verification checkpoint shown between Sub-Agent and API. Warm amber/cream palette, clean flat technical style.',
   cards: [
     {
       heading: 'What is ID-JAG?',

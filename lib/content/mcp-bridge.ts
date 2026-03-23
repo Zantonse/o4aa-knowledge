@@ -9,7 +9,7 @@ export const content: SectionContent = {
   icon: '🌉',
   hasDiagram: true,
   diagramPrompt:
-    'Network connection diagram: MCP Client (left box) connected to MCP Server (right box) via a horizontal SSE connection line labeled "Persistent SSE Connection". Okta auth checkpoint shown as a vertical gate on the connection line. Below: labeled boxes showing "Tool Discovery", "Tool Execution", "Auth Token" as phases. Warm amber/cream palette, flat technical diagram style.',
+    'Network connection diagram: MCP Client (left box) connected to MCP Server (right box) via a horizontal SSE connection line labeled "Persistent SSE Connection". Auth checkpoint shown as a vertical gate on the connection line. Below: labeled boxes showing "Tool Discovery", "Tool Execution", "Auth Token" as phases. Warm amber/cream palette, flat technical diagram style.',
   cards: [
     {
       heading: 'MCP Bridge vs. MCP Adapter',

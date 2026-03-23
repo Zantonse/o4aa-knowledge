@@ -9,7 +9,7 @@ export const content: SectionContent = {
   icon: '🔌',
   hasDiagram: true,
   diagramPrompt:
-    'Horizontal flow diagram (left to right): AI Agent box → MCP Client box → [Okta MCP Adapter box, highlighted with amber border, centered] → MCP Server box → Protected API box. Downward arrows from Okta MCP Adapter to: "Scoped Token" label, "FGA Decision" label, "Audit Log" label. Warm cream background, flat technical style, amber accent on Okta box.',
+    'Horizontal flow diagram (left to right): AI Agent box → MCP Client box → [Auth Adapter box, highlighted with amber border, centered] → MCP Server box → Protected API box. Downward arrows from Auth Adapter to: "Scoped Token" label, "Access Decision" label, "Audit Log" label. Warm cream background, flat technical style, amber accent on Auth Adapter box.',
   cards: [
     {
       heading: 'What is the MCP Adapter?',
