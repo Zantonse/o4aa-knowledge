@@ -6,6 +6,10 @@ import { content as mcpAdapter } from './mcp-adapter';
 import { content as mcpBridge } from './mcp-bridge';
 import { content as oboFlow } from './obo-flow';
 import { content as idJag } from './id-jag';
+import { content as auditReporting } from './audit-reporting';
+import { content as security } from './security';
+import { content as whyOkta } from './why-okta';
+import { content as glossary } from './glossary';
 
 export const CONTENT_MAP: Record<string, SectionContent> = {
   'ai-agents-101': aiAgents101,
@@ -15,5 +19,8 @@ export const CONTENT_MAP: Record<string, SectionContent> = {
   'mcp-bridge': mcpBridge,
   'obo-flow': oboFlow,
   'id-jag': idJag,
-  // Additional sections added in Task 6
+  'audit-reporting': auditReporting,
+  'security': security,
+  'why-okta': whyOkta,
+  'glossary': glossary,
 };
