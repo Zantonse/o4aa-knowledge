@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV_GROUPS } from '@/lib/sections';
@@ -10,6 +11,13 @@ export default function Sidebar() {
   const activeSlug = pathname.startsWith('/section/')
     ? pathname.split('/section/')[1]
     : '';
+  const activeRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    if (activeRef.current) {
+      activeRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }, [activeSlug]);
 
   return (
     <aside
@@ -42,6 +50,7 @@ export default function Sidebar() {
                 return (
                   <Link
                     key={item.slug}
+                    ref={isActive ? activeRef : undefined}
                     href={`/section/${item.slug}`}
                     className="flex items-center gap-2.5 rounded-lg mb-0.5 transition-all duration-150"
                     style={{
