@@ -13,8 +13,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="h-full">
       <body className="h-full flex flex-col">
         <header
-          className="flex-shrink-0 flex items-center justify-between px-5 h-12 border-b"
-          style={{ background: '#ffffff', borderColor: '#E2E8F0' }}
+          className="flex-shrink-0 flex items-center justify-between px-5 h-13 border-b"
+          style={{ background: '#ffffff', borderColor: '#E2E8F0', height: '52px' }}
         >
           <div className="flex items-center gap-3">
             <div
