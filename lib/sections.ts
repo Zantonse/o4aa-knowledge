@@ -36,6 +36,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     groupLabel: 'SE Playbook',
     items: [
+      { slug: 'business-outcomes', label: 'Business Outcomes', icon: '📈', isNew: true },
       { slug: 'use-case-patterns', label: 'Use Case Patterns', icon: '🎯', isNew: true },
       { slug: 'competitive', label: 'Competitive Intel', icon: '🏁', isNew: true },
     ],

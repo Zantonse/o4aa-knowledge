@@ -11,6 +11,7 @@ import { content as xaaDeepDive } from './xaa-deep-dive';
 import { content as auditReporting } from './audit-reporting';
 import { content as security } from './security';
 import { content as compliance } from './compliance';
+import { content as businessOutcomes } from './business-outcomes';
 import { content as useCasePatterns } from './use-case-patterns';
 import { content as competitive } from './competitive';
 import { content as whyOkta } from './why-okta';
@@ -29,6 +30,7 @@ export const CONTENT_MAP: Record<string, SectionContent> = {
   'audit-reporting': auditReporting,
   'security': security,
   'compliance': compliance,
+  'business-outcomes': businessOutcomes,
   'use-case-patterns': useCasePatterns,
   'competitive': competitive,
   'why-okta': whyOkta,
