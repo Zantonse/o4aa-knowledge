@@ -9,7 +9,6 @@ function splitLabel(text: string): { label: string; rest: string } | null {
   if (!match) return null;
   const label = match[1].trim();
   const rest = text.slice(match[0].length);
-  // Only treat as a label if what follows is substantial (not a one-word false match)
   if (rest.length < 20) return null;
   return { label, rest };
 }
@@ -17,14 +16,16 @@ function splitLabel(text: string): { label: string; rest: string } | null {
 export default function ContentCard({ card, index }: { card: ContentCardData; index?: number }) {
   return (
     <div
-      className="rounded-xl mb-5 overflow-hidden"
+      className="rounded-xl mb-5 overflow-hidden transition-shadow duration-200"
       style={{
         background: '#ffffff',
         border: '1px solid #E2E8F0',
         boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02)',
       }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)'; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02)'; }}
     >
-      {/* Card heading with left accent stripe */}
+      {/* Card heading */}
       <div
         className="px-6 py-3.5 flex items-center gap-3"
         style={{
@@ -41,7 +42,7 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
           </span>
         )}
         <h3
-          className="text-[12.5px] font-semibold uppercase tracking-wide"
+          className="text-[12.5px] font-semibold uppercase"
           style={{ color: '#00297A', letterSpacing: '0.05em' }}
         >
           {card.heading}
@@ -52,44 +53,50 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
       <div className="px-6 py-5">
         {card.paragraphs.map((p, i) => {
           const parsed = splitLabel(p);
+          const isFirst = i === 0;
 
           return (
             <div
               key={i}
-              className={i > 0 ? 'mt-4' : ''}
               style={{
-                paddingTop: i > 0 ? '12px' : 0,
-                borderTop: i > 0 ? '1px solid #F8FAFC' : 'none',
+                marginTop: i > 0 ? '16px' : 0,
+                paddingTop: i > 0 ? '16px' : 0,
+                borderTop: i > 0 ? '1px solid #F1F5F9' : 'none',
               }}
             >
               {parsed ? (
-                <p
-                  className="text-[14px] leading-[1.75]"
-                  style={{ color: '#334155' }}
-                >
+                <div>
                   <span
-                    className="font-semibold inline-block mr-1.5"
+                    className="inline-block mb-1.5"
                     style={{
                       color: '#0F172A',
-                      fontFamily: "'JetBrains Mono', 'DM Sans', monospace",
-                      fontSize: '12.5px',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '11.5px',
+                      fontWeight: 600,
                       background: '#F1F5F9',
-                      padding: '1px 6px',
-                      borderRadius: '4px',
+                      padding: '2px 8px',
+                      borderRadius: '5px',
                       border: '1px solid #E2E8F0',
-                      verticalAlign: 'baseline',
+                      letterSpacing: '0.01em',
                     }}
                   >
                     {parsed.label}
                   </span>
-                  {' '}{parsed.rest}
-                </p>
+                  <p
+                    className="text-[14px] leading-[1.8]"
+                    style={{ color: '#334155', marginTop: '4px' }}
+                  >
+                    {parsed.rest}
+                  </p>
+                </div>
               ) : (
                 <p
-                  className={`leading-[1.75] ${i === 0 ? 'text-[14.5px]' : 'text-[14px]'}`}
+                  className="leading-[1.8]"
                   style={{
-                    color: i === 0 ? '#1E293B' : '#334155',
-                    ...(i === 0 ? { fontWeight: 450 } : {}),
+                    fontSize: isFirst ? '14.5px' : '14px',
+                    color: isFirst ? '#1E293B' : '#334155',
+                    fontWeight: isFirst ? 450 : 400,
+                    letterSpacing: '-0.005em',
                   }}
                 >
                   {p}
