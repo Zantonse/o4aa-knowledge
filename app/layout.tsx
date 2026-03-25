@@ -26,12 +26,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             >
               ✦
             </div>
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline gap-0">
               <span
                 className="text-[15px] font-bold"
                 style={{ color: '#00297A', letterSpacing: '-0.01em' }}
               >
                 O4AA Knowledge Hub
+              </span>
+              <span
+                className="text-[13px] font-light mx-2.5"
+                style={{ color: '#CBD5E1' }}
+              >
+                |
               </span>
               <span
                 className="text-[12px] font-medium"
