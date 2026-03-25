@@ -18,10 +18,8 @@ export default function AiBar() {
   const [helpDocs, setHelpDocs] = useState(true);
   const responseRef = useRef<HTMLDivElement>(null);
 
-  // Clear response when section changes
   useEffect(() => { setResponse(''); }, [slug]);
 
-  // Auto-scroll response panel
   useEffect(() => {
     if (responseRef.current) {
       responseRef.current.scrollTop = responseRef.current.scrollHeight;
@@ -87,45 +85,71 @@ export default function AiBar() {
       style={{
         left: '240px',
         right: 0,
-        background: '#F8FAFC',
-        borderTop: '1.5px solid #E2E8F0',
-        boxShadow: '0 -4px 20px rgba(0,0,0,0.04)',
+        background: '#ffffff',
+        borderTop: '1px solid #E2E8F0',
+        boxShadow: '0 -2px 12px rgba(0,0,0,0.03)',
       }}
     >
       {/* Streaming response panel */}
       {response && (
         <div
           ref={responseRef}
-          className="px-6 py-3 text-sm leading-relaxed overflow-y-auto"
+          className="overflow-y-auto"
           style={{
-            maxHeight: '200px',
-            color: '#44403c',
-            borderBottom: '1px solid #BFDBFE',
-            background: '#F0F9FF',
+            maxHeight: '240px',
+            borderBottom: '1px solid #E2E8F0',
+            background: '#FAFCFF',
           }}
         >
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-bold uppercase tracking-wide" style={{ color: '#1E40AF' }}>
-              Answer
-            </span>
-            <button onClick={() => setResponse('')} className="text-[10px]" style={{ color: '#1E40AF' }}>
+          <div className="flex items-center justify-between px-6 pt-3 pb-1.5">
+            <div className="flex items-center gap-2">
+              <span
+                className="w-5 h-5 rounded flex items-center justify-center text-[10px]"
+                style={{ background: '#EFF6FF', color: '#1E40AF', border: '1px solid #DBEAFE' }}
+              >
+                ✦
+              </span>
+              <span
+                className="text-[10.5px] font-semibold uppercase"
+                style={{ color: '#1E40AF', letterSpacing: '0.06em', fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                Answer
+              </span>
+            </div>
+            <button
+              onClick={() => setResponse('')}
+              className="text-[11px] font-medium px-2.5 py-1 rounded-md transition-colors"
+              style={{ color: '#64748B', background: 'transparent' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#F1F5F9'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+            >
               Dismiss ✕
             </button>
           </div>
-          <p style={{ whiteSpace: 'pre-wrap' }}>
-            {response}
-            {streaming && <span className="animate-pulse">▋</span>}
-          </p>
+          <div className="px-6 pb-4">
+            <p
+              className="text-[13.5px] leading-[1.7]"
+              style={{ color: '#334155', whiteSpace: 'pre-wrap' }}
+            >
+              {response}
+              {streaming && <span className="animate-pulse" style={{ color: '#00297A' }}>▋</span>}
+            </p>
+          </div>
         </div>
       )}
 
       {/* Input row */}
-      <form onSubmit={handleSubmit} className="flex items-center gap-3 px-6 py-2.5">
-        <div className="flex items-center gap-1.5 flex-shrink-0">
-          <span className="text-sm">✦</span>
-          <span className="text-[11px] font-semibold whitespace-nowrap" style={{ color: '#334155' }}>
+      <form onSubmit={handleSubmit} className="flex items-center gap-3 px-5 py-3">
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <span
+            className="w-6 h-6 rounded-md flex items-center justify-center text-[11px]"
+            style={{ background: '#00297A', color: '#fff' }}
+          >
+            ✦
+          </span>
+          <span className="text-[12px] font-medium whitespace-nowrap" style={{ color: '#475569' }}>
             Ask about{' '}
-            <span style={{ color: '#00297A' }}>{navItem?.label ?? 'the docs'}</span>
+            <span style={{ color: '#00297A', fontWeight: 600 }}>{navItem?.label ?? 'the docs'}</span>
           </span>
         </div>
 
@@ -134,37 +158,46 @@ export default function AiBar() {
           value={question}
           onChange={e => setQuestion(e.target.value)}
           placeholder={`e.g. How does ${navItem?.label ?? 'this'} work?`}
-          className="flex-1 h-8 rounded-md px-3 text-xs outline-none"
-          style={{ background: '#fff', border: '1px solid #E2E8F0', color: '#0F172A' }}
+          className="flex-1 h-9 rounded-lg px-3.5 text-[13px] outline-none transition-all"
+          style={{
+            background: '#F8FAFC',
+            border: '1px solid #E2E8F0',
+            color: '#0F172A',
+          }}
+          onFocus={e => { (e.currentTarget as HTMLElement).style.borderColor = '#00297A'; (e.currentTarget as HTMLElement).style.boxShadow = '0 0 0 3px rgba(0,41,122,0.08)'; }}
+          onBlur={e => { (e.currentTarget as HTMLElement).style.borderColor = '#E2E8F0'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
           disabled={streaming}
         />
 
         {/* Source toggles */}
-        {[
-          { key: 'dev', label: 'dev docs', active: devDocs, toggle: () => setDevDocs(v => !v) },
-          { key: 'help', label: 'help docs', active: helpDocs, toggle: () => setHelpDocs(v => !v) },
-        ].map(({ key, label, active, toggle }) => (
-          <button
-            key={key}
-            type="button"
-            onClick={toggle}
-            className="text-[9px] font-bold px-2 py-0.5 rounded-full border flex-shrink-0"
-            style={{
-              background: active ? '#EFF6FF' : '#F1F5F9',
-              borderColor: active ? '#BFDBFE' : '#E2E8F0',
-              color: active ? '#1E40AF' : '#94A3B8',
-              opacity: active ? 1 : 0.6,
-            }}
-          >
-            {label}
-          </button>
-        ))}
+        <div className="flex gap-1.5 flex-shrink-0">
+          {[
+            { key: 'dev', label: 'dev docs', active: devDocs, toggle: () => setDevDocs(v => !v) },
+            { key: 'help', label: 'help docs', active: helpDocs, toggle: () => setHelpDocs(v => !v) },
+          ].map(({ key, label, active, toggle }) => (
+            <button
+              key={key}
+              type="button"
+              onClick={toggle}
+              className="text-[10px] font-semibold px-2.5 py-1 rounded-md border transition-all flex-shrink-0"
+              style={{
+                background: active ? '#EFF6FF' : '#F8FAFC',
+                borderColor: active ? '#BFDBFE' : '#E2E8F0',
+                color: active ? '#1E40AF' : '#94A3B8',
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
         <button
           type="submit"
           disabled={!question.trim() || streaming}
-          className="h-8 px-4 rounded-md text-xs font-bold disabled:opacity-40 flex-shrink-0"
+          className="h-9 px-5 rounded-lg text-[12.5px] font-semibold disabled:opacity-30 flex-shrink-0 transition-all"
           style={{ background: '#00297A', color: '#fff' }}
+          onMouseEnter={e => { if (!streaming) (e.currentTarget as HTMLElement).style.background = '#001D5C'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = '#00297A'; }}
         >
           {streaming ? '…' : 'Ask'}
         </button>
