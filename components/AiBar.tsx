@@ -171,23 +171,26 @@ export default function AiBar() {
         />
 
         {/* Source toggles */}
-        <div className="flex gap-1.5 flex-shrink-0">
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <span className="text-[9px] font-medium mr-1" style={{ color: '#94A3B8' }}>Sources</span>
           {[
-            { key: 'dev', label: 'dev docs', active: devDocs, toggle: () => setDevDocs(v => !v) },
-            { key: 'help', label: 'help docs', active: helpDocs, toggle: () => setHelpDocs(v => !v) },
-          ].map(({ key, label, active, toggle }) => (
+            { key: 'dev', label: 'developer.okta.com', short: 'Dev', active: devDocs, toggle: () => setDevDocs(v => !v) },
+            { key: 'help', label: 'help.okta.com', short: 'Help', active: helpDocs, toggle: () => setHelpDocs(v => !v) },
+          ].map(({ key, short, label, active, toggle }) => (
             <button
               key={key}
               type="button"
               onClick={toggle}
+              title={active ? `Searching ${label} — click to disable` : `Click to search ${label}`}
               className="text-[10px] font-semibold px-2.5 py-1 rounded-md border transition-all flex-shrink-0"
               style={{
-                background: active ? '#EFF6FF' : '#F8FAFC',
+                background: active ? '#EFF6FF' : 'transparent',
                 borderColor: active ? '#BFDBFE' : '#E2E8F0',
-                color: active ? '#1E40AF' : '#94A3B8',
+                color: active ? '#1E40AF' : '#CBD5E1',
+                textDecoration: active ? 'none' : 'line-through',
               }}
             >
-              {label}
+              {short}
             </button>
           ))}
         </div>
