@@ -15,6 +15,31 @@ function splitLabel(text: string): { label: string; rest: string } | null {
   return { label, rest };
 }
 
+// Split a long paragraph into shorter visual blocks (2-3 sentences each)
+// This dramatically improves readability without changing the content data
+function splitIntoBlocks(text: string): string[] {
+  // Split on sentence boundaries: period/exclamation/question followed by space and uppercase
+  const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z"'])/);
+  if (sentences.length <= 3) return [text]; // Short enough already
+
+  const blocks: string[] = [];
+  let current: string[] = [];
+
+  for (const sentence of sentences) {
+    current.push(sentence);
+    // Group into blocks of 2-3 sentences
+    if (current.length >= 2 && (current.length >= 3 || current.join(' ').length > 200)) {
+      blocks.push(current.join(' '));
+      current = [];
+    }
+  }
+  if (current.length > 0) {
+    blocks.push(current.join(' '));
+  }
+
+  return blocks;
+}
+
 export default function ContentCard({ card, index }: { card: ContentCardData; index?: number }) {
   return (
     <div
@@ -51,32 +76,31 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
         </h3>
       </div>
 
-      {/* Card body — constrained line length for readability */}
+      {/* Card body */}
       <div className="px-6 py-5" style={{ maxWidth: '680px' }}>
         {card.paragraphs.map((p, i) => {
           const parsed = splitLabel(p);
-          const isFirst = i === 0;
 
           return (
             <div
               key={i}
               style={{
-                marginTop: i > 0 ? '16px' : 0,
-                paddingTop: i > 0 ? '16px' : 0,
+                marginTop: i > 0 ? '20px' : 0,
+                paddingTop: i > 0 ? '20px' : 0,
                 borderTop: i > 0 ? '1px solid #F1F5F9' : 'none',
               }}
             >
               {parsed ? (
                 <div>
                   <span
-                    className="inline-block mb-1.5"
+                    className="inline-block mb-2"
                     style={{
                       color: '#0F172A',
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: '11.5px',
                       fontWeight: 600,
                       background: '#F1F5F9',
-                      padding: '2px 8px',
+                      padding: '3px 10px',
                       borderRadius: '5px',
                       border: '1px solid #E2E8F0',
                       letterSpacing: '0.01em',
@@ -84,25 +108,37 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
                   >
                     {parsed.label}
                   </span>
-                  <p
-                    className="text-[14px] leading-[1.8]"
-                    style={{ color: '#334155', marginTop: '4px' }}
-                  >
-                    {parsed.rest}
-                  </p>
+                  {splitIntoBlocks(parsed.rest).map((block, bi) => (
+                    <p
+                      key={bi}
+                      className="text-[14px] leading-[1.85]"
+                      style={{
+                        color: '#334155',
+                        marginTop: bi === 0 ? '6px' : '10px',
+                      }}
+                    >
+                      {block}
+                    </p>
+                  ))}
                 </div>
               ) : (
-                <p
-                  className="leading-[1.8]"
-                  style={{
-                    fontSize: isFirst ? '14.5px' : '14px',
-                    color: isFirst ? '#1E293B' : '#334155',
-                    fontWeight: isFirst ? 450 : 400,
-                    letterSpacing: '-0.005em',
-                  }}
-                >
-                  {p}
-                </p>
+                <div>
+                  {splitIntoBlocks(p).map((block, bi) => (
+                    <p
+                      key={bi}
+                      className="leading-[1.85]"
+                      style={{
+                        fontSize: i === 0 && bi === 0 ? '14.5px' : '14px',
+                        color: i === 0 && bi === 0 ? '#1E293B' : '#334155',
+                        fontWeight: i === 0 && bi === 0 ? 450 : 400,
+                        letterSpacing: '-0.005em',
+                        marginTop: bi > 0 ? '10px' : 0,
+                      }}
+                    >
+                      {block}
+                    </p>
+                  ))}
+                </div>
               )}
             </div>
           );
