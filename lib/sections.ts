@@ -23,6 +23,14 @@ export const NAV_GROUPS: NavGroup[] = [
       { slug: 'obo-flow', label: 'On-Behalf-Of (OBO)', icon: '🔄' },
       { slug: 'id-jag', label: 'ID-JAG Protocol', icon: '🪪' },
       { slug: 'xaa-deep-dive', label: 'XAA Deep Dive', icon: '🔗', isNew: true },
+      { slug: 'ciba', label: 'CIBA (Human-in-Loop)', icon: '✋', isNew: true },
+    ],
+  },
+  {
+    groupLabel: 'Developer',
+    items: [
+      { slug: 'nhi-management', label: 'NHI Management', icon: '🤖', isNew: true },
+      { slug: 'integration-guides', label: 'Integration Guides', icon: '🔧', isNew: true },
     ],
   },
   {
@@ -36,6 +44,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     groupLabel: 'SE Playbook',
     items: [
+      { slug: 'demo-playbook', label: 'Demo Playbook', icon: '🎬', isNew: true },
       { slug: 'business-outcomes', label: 'Business Outcomes', icon: '📈', isNew: true },
       { slug: 'use-case-patterns', label: 'Use Case Patterns', icon: '🎯', isNew: true },
       { slug: 'competitive', label: 'Competitive Intel', icon: '🏁', isNew: true },
@@ -45,6 +54,7 @@ export const NAV_GROUPS: NavGroup[] = [
     groupLabel: 'Reference',
     items: [
       { slug: 'why-okta', label: 'Why Okta', icon: '⚡' },
+      { slug: 'pricing', label: 'Pricing & Packaging', icon: '💰', isNew: true },
       { slug: 'glossary', label: 'Glossary', icon: '📖' },
     ],
   },

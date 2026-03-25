@@ -8,13 +8,18 @@ import { content as mcpBridge } from './mcp-bridge';
 import { content as oboFlow } from './obo-flow';
 import { content as idJag } from './id-jag';
 import { content as xaaDeepDive } from './xaa-deep-dive';
+import { content as ciba } from './ciba';
+import { content as nhiManagement } from './nhi-management';
+import { content as integrationGuides } from './integration-guides';
 import { content as auditReporting } from './audit-reporting';
 import { content as security } from './security';
 import { content as compliance } from './compliance';
+import { content as demoPlaybook } from './demo-playbook';
 import { content as businessOutcomes } from './business-outcomes';
 import { content as useCasePatterns } from './use-case-patterns';
 import { content as competitive } from './competitive';
 import { content as whyOkta } from './why-okta';
+import { content as pricing } from './pricing';
 import { content as glossary } from './glossary';
 
 export const CONTENT_MAP: Record<string, SectionContent> = {
@@ -27,12 +32,17 @@ export const CONTENT_MAP: Record<string, SectionContent> = {
   'obo-flow': oboFlow,
   'id-jag': idJag,
   'xaa-deep-dive': xaaDeepDive,
+  'ciba': ciba,
+  'nhi-management': nhiManagement,
+  'integration-guides': integrationGuides,
   'audit-reporting': auditReporting,
   'security': security,
   'compliance': compliance,
+  'demo-playbook': demoPlaybook,
   'business-outcomes': businessOutcomes,
   'use-case-patterns': useCasePatterns,
   'competitive': competitive,
   'why-okta': whyOkta,
+  'pricing': pricing,
   'glossary': glossary,
 };
