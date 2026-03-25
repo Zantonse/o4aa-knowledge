@@ -69,10 +69,16 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
         </button>
       </div>
       <div className="p-4">
+        {loading && (
+          <div
+            className="shimmer w-full rounded-lg mb-2"
+            style={{ height: '160px', borderRadius: '8px' }}
+          />
+        )}
         {error && (
           <p className="text-xs mb-2 px-2" style={{ color: '#b91c1c' }}>{error}</p>
         )}
-        {imgMissing ? (
+        {!loading && imgMissing ? (
           <div
             className="w-full rounded-lg flex items-center justify-center text-[13px]"
             style={{
@@ -84,7 +90,7 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
           >
             No diagram yet — click Regenerate ✦ to generate one
           </div>
-        ) : (
+        ) : !loading ? (
           // next/image not used: src can be a base64 data URL after regeneration
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -94,7 +100,7 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
             style={{ minHeight: '80px', background: '#F8FAFC' }}
             onError={() => setImgMissing(true)}
           />
-        )}
+        ) : null}
       </div>
     </div>
   );
