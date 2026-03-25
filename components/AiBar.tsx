@@ -85,7 +85,7 @@ export default function AiBar() {
     <div
       className="fixed bottom-0 z-50 flex flex-col"
       style={{
-        left: '220px',
+        left: '240px',
         right: 0,
         background: '#F8FAFC',
         borderTop: '1.5px solid #E2E8F0',
