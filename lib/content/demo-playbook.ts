@@ -2,7 +2,7 @@ import type { SectionContent } from '../types';
 
 const slug = 'demo-playbook';
 const title = 'Demo Playbook';
-const description = 'Step-by-step guides for demoing O4AA to customers — xaa.dev playground, the Agent0/Todo0 reference app, and the MCP Adapter Docker bundle.';
+const description = 'Step-by-step guides for demoing O4AA to customers — xaa.dev playground, the Agent0/Todo0 reference app, and the Agent Gateway Docker bundle.';
 const tags = ['SE-playbook', 'demo', 'POC', 'setup'];
 const icon = '🎬';
 const hasDiagram = false;
@@ -28,17 +28,17 @@ const cards = [
     ],
   },
   {
-    heading: 'MCP Adapter Demo (Docker Bundle)',
+    heading: 'Agent Gateway Demo (Docker Bundle)',
     paragraphs: [
-      'The MCP Adapter Docker bundle (okta-mcp-aws-0.12.1.tar.gz) deploys the full 5-service stack: Gateway, PostgreSQL, Redis, Admin UI, and Grafana observability. Deploy on AWS EC2 with ALB+HTTPS for a customer-facing POC. For internal demos, run locally with Docker Compose.',
-      '>> Quick start: (1) Unpack the bundle, (2) Configure .env with Okta org URL, client credentials, and backend MCP server URLs, (3) docker compose up, (4) Open Admin UI at localhost:3001 — show agent registration, resource configuration, audit log, (5) Connect Claude Desktop or VS Code to the Adapter endpoint, (6) Make tool calls and show the audit trail in real-time.',
-      '!! The Admin UI at port 3001 is the demo centerpiece for the MCP Adapter. It shows: registered agents with their resource ACLs, configured backends with auth methods, and a searchable audit log of every tool call. This is what makes the demo tangible — customers can see the governance layer, not just hear about it.',
+      'The Agent Gateway Docker bundle (okta-mcp-aws-0.12.1.tar.gz) deploys the full 5-service stack: Gateway, PostgreSQL, Redis, Admin UI, and Grafana observability. Deploy on AWS EC2 with ALB+HTTPS for a customer-facing POC. For internal demos, run locally with Docker Compose.',
+      '>> Quick start: (1) Unpack the bundle, (2) Configure .env with Okta org URL, client credentials, and backend MCP server URLs, (3) docker compose up, (4) Open Admin UI at localhost:3001 — show agent registration, resource configuration, audit log, (5) Connect Claude Desktop or VS Code to the Agent Gateway endpoint, (6) Make tool calls and show the audit trail in real-time.',
+      '!! The Admin UI at port 3001 is the demo centerpiece for the Agent Gateway. It shows: registered agents with their resource ACLs, configured backends with auth methods, and a searchable audit log of every tool call. This is what makes the demo tangible — customers can see the governance layer, not just hear about it.',
     ],
   },
   {
     heading: 'Pre-Call Checklist',
     paragraphs: [
-      '>> Before every demo: (1) Verify your Okta org has XAA enabled (Settings > Features > EA), (2) Confirm xaa.dev is accessible, (3) If using Agent0/Todo0: run the bootstrap, start the apps, verify the login flow works end-to-end, (4) If using MCP Adapter: confirm Docker is running, Admin UI is accessible, at least one backend MCP server is configured and responding, (5) Open the System Log in a browser tab — you\'ll reference it during the demo.',
+      '>> Before every demo: (1) Verify your Okta org has XAA enabled (Settings > Features > EA), (2) Confirm xaa.dev is accessible, (3) If using Agent0/Todo0: run the bootstrap, start the apps, verify the login flow works end-to-end, (4) If using Agent Gateway: confirm Docker is running, Admin UI is accessible, at least one backend MCP server is configured and responding, (5) Open the System Log in a browser tab — you\'ll reference it during the demo.',
       '>> Common failure modes and fixes: Token endpoint misconfiguration — re-run bootstrap, Scope mismatch — check custom auth server scopes match the app configuration, Docker port conflict — check nothing else is using 3001/8000, XAA feature flag not enabled — the catalog entries won\'t appear, RSA key mismatch — regenerate via bootstrap script.',
       'TT "Never wing an O4AA demo. Auth flow demos fail unpredictably when setup is approximate. Run through the full flow yourself the morning of the call. If anything breaks, you have time to fix it."',
       'Budget 30 minutes of pre-call setup time for the first demo with a new org. Subsequent demos with the same org take 5 minutes to verify.',

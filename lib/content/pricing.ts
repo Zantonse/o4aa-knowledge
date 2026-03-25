@@ -18,10 +18,10 @@ const cards = [
     ],
   },
   {
-    heading: 'MCP Adapter Engagement Model',
+    heading: 'Agent Gateway Engagement Model',
     paragraphs: [
-      'The MCP Adapter is currently delivered as a ProServ engagement, not a self-service product. The delivery includes: architecture workshop, tenant configuration, Docker bundle deployment, admin training, and handoff documentation. Position this in deals as a professional services engagement alongside the platform license.',
-      '!! Do not position the MCP Adapter as a self-service SaaS product — it is ProServ-delivered in its current form. Misrepresenting the delivery model creates deal friction and customer disappointment. When a customer asks "can we just turn it on?", the honest answer is "it\'s a guided deployment with our professional services team."',
+      'The Agent Gateway (GA April 30, 2026) is currently delivered as a ProServ engagement, not a self-service product. The delivery includes: architecture workshop, tenant configuration, Docker bundle deployment, admin training, and handoff documentation. Position this in deals as a professional services engagement alongside the platform license.',
+      '!! Do not position the Agent Gateway as a self-service SaaS product — it is ProServ-delivered in its current form. Misrepresenting the delivery model creates deal friction and customer disappointment. When a customer asks "can we just turn it on?", the honest answer is "it\'s a guided deployment with our professional services team."',
       '?? Is the customer prepared for a ProServ engagement? Do they have the infrastructure (AWS EC2, Docker) and engineering resources to support the deployment? What is their timeline?',
     ],
   },
@@ -29,7 +29,7 @@ const cards = [
     heading: 'Competitive Pricing Context',
     paragraphs: [
       'Microsoft Entra Workload Identity Premium: $3/workload identity/month for Conditional Access and risk detection on service principals. This is the most directly comparable competitive price point. Note: this covers only workload CA — not OBO, not FGA, not agent-specific audit, not MCP support.',
-      '>> Okta\'s value framing: the comparison is not "Okta vs. Entra per-identity cost" but "integrated agent identity platform vs. assembling pieces from multiple vendors." The TCO of building custom token exchange + FGA + token vault + audit + MCP auth across multiple tools always exceeds the cost of an integrated platform. Frame pricing conversations around total cost of ownership, not per-unit pricing.',
+      '>> Okta\'s value framing: the comparison is not "Okta vs. Entra per-identity cost" but "integrated agent identity platform vs. assembling pieces from multiple vendors." The TCO of building custom token exchange + FGA + Privileged Credential Management + audit + MCP auth across multiple tools always exceeds the cost of an integrated platform. Frame pricing conversations around total cost of ownership, not per-unit pricing.',
       'TT "The question isn\'t what does Okta cost per agent — it\'s what does it cost your engineering team to build and maintain agent auth across 10 backend systems, keep it secure, and pass your next audit. That\'s the real comparison."',
     ],
   },

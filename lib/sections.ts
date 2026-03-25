@@ -13,7 +13,7 @@ export const NAV_GROUPS: NavGroup[] = [
     groupLabel: 'Okta Products',
     items: [
       { slug: 'o4aa-products', label: 'O4AA Product Suite', icon: '🔐' },
-      { slug: 'mcp-adapter', label: 'MCP Adapter & Server', icon: '🔌' },
+      { slug: 'mcp-adapter', label: 'Agent Gateway & MCP Server', icon: '🔌' },
       { slug: 'mcp-bridge', label: 'MCP Bridge', icon: '🌉' },
     ],
   },

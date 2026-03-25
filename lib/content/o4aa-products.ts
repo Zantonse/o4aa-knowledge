@@ -4,20 +4,20 @@ export const content: SectionContent = {
   slug: 'o4aa-products',
   title: 'O4AA Product Suite',
   description:
-    'Cross App Access (XAA), Auth0 Fine Grained Authorization, Token Vault, and the Okta MCP Server: the components of Okta for AI Agents and how they secure agentic systems.',
-  tags: ['products', 'XAA', 'Auth0-FGA', 'token-vault'],
+    'Cross App Access (XAA), Auth0 Fine Grained Authorization, Privileged Credential Management, and the Okta MCP Server: the components of Okta for AI Agents and how they secure agentic systems.',
+  tags: ['products', 'XAA', 'Auth0-FGA', 'privileged-credential-management'],
   icon: '🔐',
   hasDiagram: true,
   diagramPrompt:
-    'Product architecture diagram: four interconnected component boxes labeled Cross App Access, Authorization, Token Vault, and MCP Server. AI Agent above, Protected APIs below. Amber/cream palette, flat technical illustration, clean white background.',
+    'Product architecture diagram: four interconnected component boxes labeled Cross App Access, Authorization, Privileged Credential Management, and MCP Server. AI Agent above, Protected APIs below. Amber/cream palette, flat technical illustration, clean white background.',
   cards: [
     {
       heading: 'The O4AA Product Suite',
       paragraphs: [
-        'Okta for AI Agents (O4AA) is a set of integrated identity capabilities that address the authentication and authorization challenges unique to agentic AI systems. The core components are: Cross App Access (XAA) for agent-to-app delegation, Auth0 Fine Grained Authorization (FGA) for per-resource access decisions, Token Vault for secure credential management, and the Okta MCP Server for managing the Okta tenant via AI agents. Each solves a distinct problem — but together they form a coherent identity layer for production agent deployments.',
+        'Okta for AI Agents (O4AA) is a set of integrated identity capabilities that address the authentication and authorization challenges unique to agentic AI systems. The core components are: Cross App Access (XAA) for agent-to-app delegation, Auth0 Fine Grained Authorization (FGA) for per-resource access decisions, Privileged Credential Management for secure credential storage and lifecycle management, and the Okta MCP Server for managing the Okta tenant via AI agents. Each solves a distinct problem — but together they form a coherent identity layer for production agent deployments.',
         '!! Cross App Access (XAA) is the foundation. It is a new protocol developed by Okta (and standardized via the IETF as the Identity Assertion JWT Authorization Grant, or ID-JAG) that enables secure, enterprise-governed communication between applications — including AI agents. XAA replaces ad-hoc integration patterns (shared service accounts, raw token forwarding) with a standards-based delegation model where enterprise IT admins control which apps can connect and what they can access. XAA is currently in self-service Early Access — enable it in Admin Console > Settings > Features > Early Access.',
         'Auth0 Fine Grained Authorization (FGA) adds relationship-based access control. Built on the open-source OpenFGA engine (a CNCF incubating project), Auth0 FGA answers "does THIS agent have permission to access THIS specific resource on behalf of THIS user?" — a fundamentally richer question than role-based access control. The managed service is accessed at dashboard.fga.dev with an Auth0 account. Note: Auth0 FGA is branded under Auth0, not Okta Workforce Identity Cloud. SEs selling into WIC-only accounts should understand that FGA requires the Auth0/OCI product surface.',
-        'Token Vault and scoped token issuance close the credential security loop. Token Vault is a secure, centralized store for third-party credentials and refresh tokens that agents need during task execution — moving credentials out of agent memory and into Okta-managed infrastructure. Scoped token issuance (via RFC 8693 Token Exchange) mints short-lived, minimally-permissioned tokens for each tool call. Note: "Token Vault" and "Scoped Tokens" are capability descriptions, not named SKUs — they refer to the credential management and token narrowing mechanisms within the broader O4AA platform.',
+        'Privileged Credential Management (GA April 30, 2026) and scoped token issuance close the credential security loop. Credential Management is a secure, centralized store for third-party credentials and refresh tokens that agents need during task execution — moving credentials out of agent memory and into Okta-managed infrastructure. Scoped token issuance (via RFC 8693 Token Exchange) mints short-lived, minimally-permissioned tokens for each tool call. Note: Privileged Credential Management and "Scoped Tokens" are capability descriptions, not named SKUs — they refer to the credential management and token narrowing mechanisms within the broader O4AA platform.',
       ],
     },
     {

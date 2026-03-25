@@ -23,11 +23,11 @@ export const content: SectionContent = {
     {
       heading: 'Okta Product Terms',
       paragraphs: [
-        'O4AA (Okta for AI Agents): The umbrella term for Okta\'s identity capabilities designed for AI and agentic systems — including XAA, OBO Token Exchange, Auth0 FGA, Token Vault, and the Okta MCP Server.',
+        'O4AA (Okta for AI Agents): The umbrella term for Okta\'s identity capabilities designed for AI and agentic systems — including XAA, OBO Token Exchange, Auth0 FGA, Privileged Credential Management, the Agent Gateway, and the Okta MCP Server.',
         'Auth0 Fine Grained Authorization (FGA): Relationship-based access control, branded under Auth0 (not Okta WIC). Managed service at dashboard.fga.dev. Built on OpenFGA (CNCF incubating). Answers "does THIS agent have permission to access THIS specific resource on behalf of THIS user?"',
-        'Token Vault: Okta\'s secure credential storage and lifecycle management for agent tokens. Centralizes third-party OAuth tokens and API keys — agents hold reference pointers, not raw credentials. Handles refresh, rotation, and revocation. A capability within O4AA, not a separately named SKU.',
+        'Privileged Credential Management (GA April 30, 2026): Okta\'s secure credential storage and lifecycle management for agent tokens. Centralizes third-party OAuth tokens and API keys — agents hold reference pointers, not raw credentials. Handles refresh, rotation, and revocation. A capability within O4AA, not a separately named SKU.',
         'Okta MCP Server: An open-source MCP server (github.com/okta/okta-mcp-server) that exposes Okta Admin Management APIs to LLMs. Enables AI agents to manage the Okta tenant via natural language (user/group management, system logs, policies). Shipped and GA.',
-        'MCP Adapter: An upcoming Okta capability to serve as the external OAuth authorization server for MCP tool calls — filling the auth gap in the MCP protocol. Not yet shipped. For current agent-to-app auth, use XAA + OBO Token Exchange.',
+        'Agent Gateway (GA April 30, 2026): Okta\'s centralized MCP control plane — a self-hosted OAuth 2.1 authorization gateway that sits between AI agents and backend MCP servers. Authenticates agents via Okta, brokers token exchange, enforces per-agent ACLs, and produces a full audit trail. For current agent-to-app auth without Agent Gateway, use XAA + OBO Token Exchange.',
       ],
     },
     {

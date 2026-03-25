@@ -16,7 +16,7 @@ export const content: SectionContent = {
         'LangChain is the most common agent framework. The integration point is the Tool layer — where LangChain makes external API calls. The pattern: configure each LangChain Tool to obtain an Okta token before calling the protected API. For OBO flows, the LangGraph node that initiates the agent task receives the user\'s access token and exchanges it via Okta\'s token exchange endpoint before each tool call.',
         '>> Integration pattern: (1) User authenticates via Okta (Auth Code + PKCE), (2) LangGraph receives user\'s access token as task context, (3) Before each tool call, a custom callback or middleware calls Okta\'s /token endpoint with grant_type=token-exchange, passing subject_token (user\'s token) and the tool\'s target audience, (4) Okta returns a scoped delegated token, (5) The tool call uses the delegated token as its Bearer credential, (6) After the call, the scoped token is discarded (not cached).',
         '!! Key implementation detail: the token exchange happens per-tool-call, not per-session. This is what enables per-call audit and minimal privilege. A common mistake is exchanging once at session start and reusing the broad token — this defeats the purpose of OBO.',
-        'For MCP-based LangChain tools: configure the LangChain MCP tool to point at the Okta MCP Adapter endpoint instead of the raw MCP server. The Adapter handles all auth transparently — the LangChain tool code does not need to know about Okta.',
+        'For MCP-based LangChain tools: configure the LangChain MCP tool to point at the Okta Agent Gateway endpoint instead of the raw MCP server. The Agent Gateway handles all auth transparently — the LangChain tool code does not need to know about Okta.',
       ],
     },
     {
@@ -38,9 +38,9 @@ export const content: SectionContent = {
     {
       heading: 'Claude Tools / Claude Code + MCP',
       paragraphs: [
-        'Claude Code and Claude Desktop connect to MCP servers natively. The MCP Adapter serves as the remote MCP server endpoint — Claude connects to the Adapter, which handles auth and routes to the actual backend MCP servers. Claude does not need to know about Okta; the Adapter handles everything via the BFF pattern.',
-        '>> Setup: (1) Deploy the MCP Adapter (Docker bundle), (2) Configure backend MCP servers in the Admin UI, (3) In Claude Desktop settings or claude_desktop_config.json, add the Adapter\'s URL as a remote MCP server, (4) On first connection, the Adapter initiates OAuth via the BFF pattern — Claude sees a standard OAuth prompt, (5) After auth, Claude can call all tools exposed by the configured backends, with per-agent ACLs and per-call audit enforced by the Adapter.',
-        'TT "Your developers are probably already using Claude Code or Claude Desktop with MCP. The Adapter slots in as the MCP server endpoint — Claude connects to it like any other MCP server. The difference: every tool call goes through Okta auth, gets per-user scoping, and produces an audit event. Zero changes to the Claude configuration beyond pointing at a different URL."',
+        'Claude Code and Claude Desktop connect to MCP servers natively. The Agent Gateway serves as the remote MCP server endpoint — Claude connects to the Gateway, which handles auth and routes to the actual backend MCP servers. Claude does not need to know about Okta; the Gateway handles everything via the BFF pattern.',
+        '>> Setup: (1) Deploy the Agent Gateway (Docker bundle), (2) Configure backend MCP servers in the Admin UI, (3) In Claude Desktop settings or claude_desktop_config.json, add the Gateway\'s URL as a remote MCP server, (4) On first connection, the Agent Gateway initiates OAuth via the BFF pattern — Claude sees a standard OAuth prompt, (5) After auth, Claude can call all tools exposed by the configured backends, with per-agent ACLs and per-call audit enforced by the Gateway.',
+        'TT "Your developers are probably already using Claude Code or Claude Desktop with MCP. The Agent Gateway slots in as the MCP server endpoint — Claude connects to it like any other MCP server. The difference: every tool call goes through Okta auth, gets per-user scoping, and produces an audit event. Zero changes to the Claude configuration beyond pointing at a different URL."',
       ],
     },
     {
@@ -48,7 +48,7 @@ export const content: SectionContent = {
       paragraphs: [
         'For frameworks not listed above, the integration follows a framework-agnostic pattern. The key insight: Okta integration happens at the tool call boundary, not at the framework level. Any framework that makes HTTP calls to external APIs can use Okta tokens.',
         '>> Universal integration steps: (1) Authenticate the user via Okta (Auth Code + PKCE or Device Authorization Grant), (2) Store the user\'s access token in the agent\'s session context, (3) Before each tool call, exchange the user\'s token for a scoped delegated token via POST to /oauth2/{authServerId}/v1/token with grant_type=urn:ietf:params:oauth:grant-type:token-exchange, (4) Use the delegated token as the Bearer credential for the tool call, (5) Discard the delegated token after use (do not cache).',
-        '?? Which agent framework is the customer using? This determines the integration pattern. If they are using MCP, point them at the Adapter. If they are using direct API calls, walk them through the OBO token exchange integration at the tool call boundary.',
+        '?? Which agent framework is the customer using? This determines the integration pattern. If they are using MCP, point them at the Agent Gateway. If they are using direct API calls, walk them through the OBO token exchange integration at the tool call boundary.',
       ],
     },
   ],
