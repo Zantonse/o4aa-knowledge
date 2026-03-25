@@ -69,11 +69,19 @@ export default function SectionPage({ content }: { content: SectionContent }) {
         <div className="flex-1" style={{ height: '1px', background: '#E2E8F0' }} />
       </div>
 
-      {/* Content cards */}
+      {/* Content cards with staggered entrance */}
       {content.cards.map((card, i) => (
-        <div key={i}>
+        <div
+          key={i}
+          className="card-enter"
+          style={{ animationDelay: `${i * 80}ms` }}
+        >
           <ContentCard card={card} index={i} />
-          {content.hasDiagram && i === 0 && <DiagramCard section={content} />}
+          {content.hasDiagram && i === 0 && (
+            <div className="card-enter" style={{ animationDelay: `${(i + 1) * 80}ms` }}>
+              <DiagramCard section={content} />
+            </div>
+          )}
         </div>
       ))}
 
