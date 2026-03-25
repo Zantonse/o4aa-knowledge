@@ -32,8 +32,12 @@ export default function SectionPage({ content }: { content: SectionContent }) {
             {navItem?.isNew && <NewBadge />}
           </div>
           <p
-            className="text-[14.5px] mb-3.5"
-            style={{ color: '#64748B', lineHeight: 1.65 }}
+            className="text-[14px] mb-3.5"
+            style={{
+              color: '#64748B',
+              lineHeight: 1.7,
+              maxWidth: '580px',
+            }}
           >
             {content.description}
           </p>
