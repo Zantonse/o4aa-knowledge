@@ -87,9 +87,9 @@ export default function AiBar() {
       style={{
         left: '220px',
         right: 0,
-        background: '#fffbeb',
-        borderTop: '1.5px solid #fcd34d',
-        boxShadow: '0 -4px 20px rgba(245,158,11,0.08)',
+        background: '#F8FAFC',
+        borderTop: '1.5px solid #E2E8F0',
+        boxShadow: '0 -4px 20px rgba(0,0,0,0.04)',
       }}
     >
       {/* Streaming response panel */}
@@ -100,15 +100,15 @@ export default function AiBar() {
           style={{
             maxHeight: '200px',
             color: '#44403c',
-            borderBottom: '1px solid #fde68a',
-            background: '#fefce8',
+            borderBottom: '1px solid #BFDBFE',
+            background: '#F0F9FF',
           }}
         >
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-bold uppercase tracking-wide" style={{ color: '#a16207' }}>
+            <span className="text-[10px] font-bold uppercase tracking-wide" style={{ color: '#1E40AF' }}>
               Answer
             </span>
-            <button onClick={() => setResponse('')} className="text-[10px]" style={{ color: '#d97706' }}>
+            <button onClick={() => setResponse('')} className="text-[10px]" style={{ color: '#1E40AF' }}>
               Dismiss ✕
             </button>
           </div>
@@ -123,9 +123,9 @@ export default function AiBar() {
       <form onSubmit={handleSubmit} className="flex items-center gap-3 px-6 py-2.5">
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <span className="text-sm">✦</span>
-          <span className="text-[11px] font-semibold whitespace-nowrap" style={{ color: '#78350f' }}>
+          <span className="text-[11px] font-semibold whitespace-nowrap" style={{ color: '#334155' }}>
             Ask about{' '}
-            <span style={{ color: '#b45309' }}>{navItem?.label ?? 'the docs'}</span>
+            <span style={{ color: '#00297A' }}>{navItem?.label ?? 'the docs'}</span>
           </span>
         </div>
 
@@ -135,7 +135,7 @@ export default function AiBar() {
           onChange={e => setQuestion(e.target.value)}
           placeholder={`e.g. How does ${navItem?.label ?? 'this'} work?`}
           className="flex-1 h-8 rounded-md px-3 text-xs outline-none"
-          style={{ background: '#fff', border: '1px solid #e8d5b0', color: '#1c1917' }}
+          style={{ background: '#fff', border: '1px solid #E2E8F0', color: '#0F172A' }}
           disabled={streaming}
         />
 
@@ -150,9 +150,9 @@ export default function AiBar() {
             onClick={toggle}
             className="text-[9px] font-bold px-2 py-0.5 rounded-full border flex-shrink-0"
             style={{
-              background: active ? '#fef3c7' : '#f5f0e8',
-              borderColor: active ? '#fde68a' : '#e8d5b0',
-              color: active ? '#92400e' : '#a8a29e',
+              background: active ? '#EFF6FF' : '#F1F5F9',
+              borderColor: active ? '#BFDBFE' : '#E2E8F0',
+              color: active ? '#1E40AF' : '#94A3B8',
               opacity: active ? 1 : 0.6,
             }}
           >
@@ -164,7 +164,7 @@ export default function AiBar() {
           type="submit"
           disabled={!question.trim() || streaming}
           className="h-8 px-4 rounded-md text-xs font-bold disabled:opacity-40 flex-shrink-0"
-          style={{ background: '#f59e0b', color: '#fff' }}
+          style={{ background: '#00297A', color: '#fff' }}
         >
           {streaming ? '…' : 'Ask'}
         </button>

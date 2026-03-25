@@ -13,18 +13,18 @@ export default function SectionPage({ content }: { content: SectionContent }) {
       <div className="flex items-start gap-4 mb-6">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-          style={{ background: '#fef3c7', border: '1px solid #fcd34d' }}
+          style={{ background: '#EFF6FF', border: '1px solid #BFDBFE' }}
         >
           {content.icon}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-xl font-extrabold tracking-tight" style={{ color: '#1c1917' }}>
+            <h1 className="text-xl font-extrabold tracking-tight" style={{ color: '#0F172A' }}>
               {content.title}
             </h1>
             {navItem?.isNew && <NewBadge />}
           </div>
-          <p className="text-sm leading-snug mb-2" style={{ color: '#78716c' }}>
+          <p className="text-sm leading-snug mb-2" style={{ color: '#64748B' }}>
             {content.description}
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -32,7 +32,7 @@ export default function SectionPage({ content }: { content: SectionContent }) {
               <span
                 key={tag}
                 className="text-[10px] font-medium px-2 py-0.5 rounded-full border"
-                style={{ background: '#fef3c7', borderColor: '#fde68a', color: '#92400e' }}
+                style={{ background: '#EFF6FF', borderColor: '#BFDBFE', color: '#1E40AF' }}
               >
                 {tag}
               </span>

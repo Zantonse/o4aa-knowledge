@@ -32,12 +32,12 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
   return (
     <div
       className="rounded-xl p-5 mb-4"
-      style={{ background: '#fef9f0', border: '1.5px dashed #fcd34d' }}
+      style={{ background: '#F8FAFC', border: '1.5px dashed #CBD5E1' }}
     >
       <div className="flex items-center justify-between mb-3">
         <h3
           className="text-[11px] font-bold uppercase tracking-wide"
-          style={{ color: '#78350f' }}
+          style={{ color: '#00297A' }}
         >
           Architecture Diagram
         </h3>
@@ -46,9 +46,9 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
           disabled={loading}
           className="text-[11px] font-semibold px-3 py-1 rounded-md disabled:opacity-50"
           style={{
-            background: '#fef3c7',
-            border: '1px solid #fde68a',
-            color: '#92400e',
+            background: '#EFF6FF',
+            border: '1px solid #BFDBFE',
+            color: '#1E40AF',
           }}
         >
           {loading ? 'Generating…' : 'Regenerate ✦'}
@@ -60,7 +60,7 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
       {imgMissing ? (
         <div
           className="w-full rounded-lg flex items-center justify-center text-xs italic"
-          style={{ minHeight: '120px', background: '#faf7f2', color: '#a16207' }}
+          style={{ minHeight: '120px', background: '#F1F5F9', color: '#64748B' }}
         >
           No diagram yet — click Regenerate ✦ to generate one
         </div>
@@ -71,7 +71,7 @@ export default function DiagramCard({ section }: { section: SectionContent }) {
           src={imgSrc}
           alt={`${section.title} architecture diagram`}
           className="w-full rounded-lg"
-          style={{ minHeight: '80px', background: '#faf7f2' }}
+          style={{ minHeight: '80px', background: '#F8FAFC' }}
           onError={() => setImgMissing(true)}
         />
       )}

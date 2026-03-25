@@ -14,25 +14,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="h-full flex flex-col">
         <header
           className="flex-shrink-0 flex items-center justify-between px-5 h-12 border-b"
-          style={{ background: '#fff7ed', borderColor: '#e8d5b0' }}
+          style={{ background: '#ffffff', borderColor: '#E2E8F0' }}
         >
           <div className="flex items-center gap-3">
             <div
               className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white"
-              style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+              style={{ background: '#00297A' }}
             >
               ✦
             </div>
-            <span className="text-sm font-bold" style={{ color: '#78350f' }}>
+            <span className="text-sm font-bold" style={{ color: '#00297A' }}>
               O4AA Knowledge Hub
             </span>
-            <span className="text-xs" style={{ color: '#a16207' }}>
+            <span className="text-xs" style={{ color: '#64748B' }}>
               Okta for AI Agents
             </span>
           </div>
           <span
             className="text-xs font-semibold px-3 py-1 rounded-full border"
-            style={{ background: '#fef3c7', borderColor: '#fcd34d', color: '#92400e' }}
+            style={{ background: '#EFF6FF', borderColor: '#BFDBFE', color: '#1E40AF' }}
           >
             SE Internal Reference
           </span>
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Sidebar />
           <main
             className="flex-1 overflow-y-auto"
-            style={{ background: '#faf7f2', paddingBottom: '80px' }}
+            style={{ background: '#F8FAFC', paddingBottom: '80px' }}
           >
             {children}
           </main>
