@@ -6,14 +6,15 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { slug: 'ai-agents-101', label: 'AI Agents 101', icon: '🤖' },
       { slug: 'agent-identity', label: 'Agent Identity', icon: '👤' },
+      { slug: 'mcp-protocol', label: 'MCP Protocol', icon: '📡', isNew: true },
     ],
   },
   {
     groupLabel: 'Okta Products',
     items: [
       { slug: 'o4aa-products', label: 'O4AA Product Suite', icon: '🔐' },
-      { slug: 'mcp-adapter', label: 'MCP Adapter', icon: '🔌', isNew: true },
-      { slug: 'mcp-bridge', label: 'MCP Bridge', icon: '🌉', isNew: true },
+      { slug: 'mcp-adapter', label: 'MCP Adapter & Server', icon: '🔌' },
+      { slug: 'mcp-bridge', label: 'MCP Bridge', icon: '🌉' },
     ],
   },
   {
@@ -21,6 +22,7 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { slug: 'obo-flow', label: 'On-Behalf-Of (OBO)', icon: '🔄' },
       { slug: 'id-jag', label: 'ID-JAG Protocol', icon: '🪪' },
+      { slug: 'xaa-deep-dive', label: 'XAA Deep Dive', icon: '🔗', isNew: true },
     ],
   },
   {
@@ -28,6 +30,14 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { slug: 'audit-reporting', label: 'Audit & Reporting', icon: '📊' },
       { slug: 'security', label: 'Security', icon: '🛡️' },
+      { slug: 'compliance', label: 'Industry Compliance', icon: '⚖️', isNew: true },
+    ],
+  },
+  {
+    groupLabel: 'SE Playbook',
+    items: [
+      { slug: 'use-case-patterns', label: 'Use Case Patterns', icon: '🎯', isNew: true },
+      { slug: 'competitive', label: 'Competitive Intel', icon: '🏁', isNew: true },
     ],
   },
   {
