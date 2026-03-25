@@ -17,7 +17,7 @@ export const content: SectionContent = {
         'OAuth 2.0 Token Exchange (RFC 8693): A standard grant type that allows a client to exchange one token for another — used by Okta to implement On-Behalf-Of delegation. The exchanged token carries the user\'s identity (sub claim) and the service app\'s client ID (cid claim). Note: Okta\'s implementation does not emit the RFC 8693 act (actor) claim as a structured JWT claim.',
         'On-Behalf-Of (OBO): The pattern in which an AI agent obtains a token to act on behalf of a specific user, rather than acting as itself. Implemented via RFC 8693 token exchange in Okta. GA in Okta Workforce Identity Cloud.',
         'ID-JAG (Identity Assertion JWT Authorization Grant): An adopted IETF OAuth Working Group draft (draft-ietf-oauth-identity-assertion-authz-grant-02). The token type used by Cross App Access (XAA). A short-lived JWT signed by Okta that asserts a user\'s identity and that a requesting app has been trusted by the enterprise. System Log event app.oauth2.token.grant.id_jag is EA in Preview since August 2025.',
-        'Cross App Access (XAA): Okta\'s protocol for enterprise-governed agent-to-app and app-to-app access. Replaces scattered integrations with centralized IT admin control over which apps connect and what they can access. Self-service Early Access. Test at xaa.dev.',
+        '!! Cross App Access (XAA): Okta\'s protocol for enterprise-governed agent-to-app and app-to-app access. Replaces scattered integrations with centralized IT admin control over which apps connect and what they can access. Self-service Early Access. Test at xaa.dev.',
       ],
     },
     {
