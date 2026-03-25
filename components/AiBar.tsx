@@ -81,13 +81,14 @@ export default function AiBar() {
 
   return (
     <div
-      className="fixed bottom-0 z-50 flex flex-col"
+      className={`fixed bottom-0 z-50 flex flex-col ${streaming ? 'stream-pulse' : ''}`}
       style={{
         left: '240px',
         right: 0,
         background: '#ffffff',
-        borderTop: '1px solid #E2E8F0',
-        boxShadow: '0 -2px 12px rgba(0,0,0,0.03)',
+        borderTop: streaming ? '2px solid #BFDBFE' : '1px solid #E2E8F0',
+        boxShadow: streaming ? '0 -4px 20px rgba(0,41,122,0.06)' : '0 -2px 12px rgba(0,0,0,0.03)',
+        transition: 'border-color 0.3s, box-shadow 0.3s',
       }}
     >
       {/* Streaming response panel */}
