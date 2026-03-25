@@ -128,13 +128,32 @@ export default function AiBar() {
             </button>
           </div>
           <div className="px-6 pb-4">
-            <p
-              className="text-[13.5px] leading-[1.7]"
-              style={{ color: '#334155', whiteSpace: 'pre-wrap' }}
+            <div
+              className="text-[13.5px] leading-[1.75]"
+              style={{ color: '#334155' }}
             >
-              {response}
+              {response.split('\n').map((line, i) => {
+                if (!line.trim()) return <br key={i} />;
+                // Detect markdown-style headers (## Heading)
+                if (line.startsWith('## ')) {
+                  return (
+                    <p key={i} className="font-semibold mt-3 mb-1 text-[14px]" style={{ color: '#0F172A' }}>
+                      {line.replace(/^##\s*/, '')}
+                    </p>
+                  );
+                }
+                // Detect bold (**text**)
+                const parts = line.split(/\*\*(.*?)\*\*/g);
+                return (
+                  <p key={i} className="mb-1">
+                    {parts.map((part, j) =>
+                      j % 2 === 1 ? <strong key={j} style={{ color: '#0F172A', fontWeight: 600 }}>{part}</strong> : part
+                    )}
+                  </p>
+                );
+              })}
               {streaming && <span className="animate-pulse" style={{ color: '#00297A' }}>▋</span>}
-            </p>
+            </div>
           </div>
         </div>
       )}
