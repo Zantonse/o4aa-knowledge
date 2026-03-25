@@ -51,8 +51,8 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
         </h3>
       </div>
 
-      {/* Card body */}
-      <div className="px-6 py-5">
+      {/* Card body — constrained line length for readability */}
+      <div className="px-6 py-5" style={{ maxWidth: '680px' }}>
         {card.paragraphs.map((p, i) => {
           const parsed = splitLabel(p);
           const isFirst = i === 0;
