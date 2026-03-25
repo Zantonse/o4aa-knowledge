@@ -12,6 +12,7 @@ const diagramPrompt = '';
 const cards = [
   {
     heading: 'Microsoft Entra — Zero Trust for AI and Recent Incidents',
+    image: 'diagrams/competitive-entra.png',
     paragraphs: [
       'Microsoft Entra (formerly Azure AD) is the incumbent identity layer across most enterprise environments. It is a formidable competitor due to sheer distribution: Entra ID is included in Microsoft 365 E3/E5 licenses at effective zero incremental cost. CFO-driven "Microsoft-only" consolidation is the most common reason Okta loses to Entra, not feature parity.',
       'In March 2026 Microsoft announced "Zero Trust for AI" and new agentic AI security capabilities spanning Entra, Defender, and Purview. This is a coordinated messaging campaign, not a single product launch. The framing ties Copilot governance, Purview data classification, and Entra Workload Identities into a single narrative. Expect prospects to have heard of it before your call.',
@@ -25,6 +26,7 @@ const cards = [
   },
   {
     heading: 'AWS IAM — Bedrock Agents, STS Limits, and the User Delegation Gap',
+    image: 'diagrams/competitive-aws.png',
     paragraphs: [
       'AWS IAM is the correct tool for authenticating agents to AWS infrastructure. IAM Roles for Compute (EC2, Lambda, ECS, SageMaker) provision temporary credentials automatically. STS AssumeRole handles cross-account and cross-service delegation with role chaining. For agents running entirely within the AWS ecosystem operating on AWS resources, this is a well-solved problem. The conversation starts when agents leave the AWS boundary.',
       '!! The Bedrock Agents user identity gap is the decisive technical point. Bedrock Agents assign a single IAM service role per agent. Every user request — regardless of which human initiated it — executes under that same role. CloudTrail logs the service role ARN, not the individual user who triggered the action. Per-user data access control and user-level audit trails require custom engineering completely outside IAM. There is no native STS mechanism to propagate user identity through an agent chain.',
@@ -38,6 +40,7 @@ const cards = [
   },
   {
     heading: 'Ping Identity — "Identity for AI" GA and the Runtime Identity Challenge',
+    image: 'diagrams/competitive-ping.png',
     paragraphs: [
       'Ping Identity is the most direct new competitor in the agentic identity space as of March 2026. On March 25 they announced "Identity for AI" reaching General Availability on March 31. This is not a roadmap item — it is a shipping product and prospects in active RFPs will have seen it. You must be prepared to address it specifically.',
       'Ping\'s "Identity for AI" introduces what they call Runtime Identity: a framework that registers autonomous AI agents as users in PingOne, links them to a human owner, and enforces delegated, fine-grained access controls at every action the agent takes. The concept maps directly to O4AA\'s agent delegation model. The key differences are architecture, ecosystem, and deployment reality.',
@@ -67,6 +70,7 @@ const cards = [
   },
   {
     heading: 'Market Landscape — The March 2026 Shift and Where Okta Stands',
+    image: 'diagrams/competitive-landscape.png',
     paragraphs: [
       'March 2026 marks the point at which agentic AI identity moved from a roadmap conversation to an RFP disqualification criterion. Microsoft, Ping Identity, SailPoint, and Okta all launched dedicated AI agent security frameworks within a 30-day window. Vendors without a runtime identity story for autonomous agents are being removed from enterprise shortlists before the first demo.',
       '!! The defining question in every competitive RFP right now is: "Can your platform maintain user-level delegation through an autonomous agent chain, enforce fine-grained access per action, and produce a human-traceable audit trail — without requiring the agent to be Azure-native, AWS-native, or on-Ping?" This is the question that eliminates Microsoft (Azure-locked Managed Identities), AWS (no user delegation primitive in STS), and Ping (hybrid fragmentation) and that O4AA was designed to answer.',

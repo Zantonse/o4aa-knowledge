@@ -1,6 +1,7 @@
 export interface ContentCardData {
   heading: string;
   paragraphs: string[]; // array of plain-text paragraphs — rendered as <p> tags
+  image?: string;       // optional image path relative to /public (e.g., 'diagrams/competitive-entra.png')
 }
 
 export interface SectionContent {

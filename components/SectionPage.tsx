@@ -80,6 +80,26 @@ export default function SectionPage({ content }: { content: SectionContent }) {
           style={{ animationDelay: `${i * 80}ms` }}
         >
           <ContentCard card={card} index={i} />
+          {/* Per-card image (if card has an image field) */}
+          {card.image && (
+            <div
+              className="rounded-xl mb-5 overflow-hidden card-enter"
+              style={{
+                background: '#FAFCFF',
+                border: '1.5px solid #E2E8F0',
+                animationDelay: `${(i + 1) * 80}ms`,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`/${card.image}`}
+                alt={`${card.heading} diagram`}
+                className="w-full"
+                style={{ background: '#F8FAFC' }}
+              />
+            </div>
+          )}
+          {/* Section-level diagram after first card */}
           {content.hasDiagram && i === 0 && (
             <div className="card-enter" style={{ animationDelay: `${(i + 1) * 80}ms` }}>
               <DiagramCard section={content} />
