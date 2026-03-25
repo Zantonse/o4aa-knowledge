@@ -34,4 +34,16 @@
     background: #DBEAFE;
     color: #1E3A5F;
   }
+
+  /* Smooth focus transitions */
+  input, button, a {
+    transition: all 0.15s ease;
+  }
+
+  /* Better focus indicators for keyboard nav */
+  :focus-visible {
+    outline: 2px solid #00297A;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }

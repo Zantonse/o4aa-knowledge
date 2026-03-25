@@ -13,28 +13,45 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="h-full">
       <body className="h-full flex flex-col">
         <header
-          className="flex-shrink-0 flex items-center justify-between px-5 h-13 border-b"
-          style={{ background: '#ffffff', borderColor: '#E2E8F0', height: '52px' }}
+          className="flex-shrink-0 flex items-center justify-between px-5 border-b"
+          style={{ background: '#ffffff', borderColor: '#E2E8F0', height: '54px' }}
         >
           <div className="flex items-center gap-3">
             <div
-              className="w-7 h-7 rounded-md flex items-center justify-center text-sm font-bold text-white"
-              style={{ background: '#00297A' }}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
+              style={{
+                background: 'linear-gradient(135deg, #00297A, #0041B8)',
+                boxShadow: '0 1px 4px rgba(0,41,122,0.25)',
+              }}
             >
               ✦
             </div>
-            <span className="text-sm font-bold" style={{ color: '#00297A' }}>
-              O4AA Knowledge Hub
-            </span>
-            <span className="text-xs" style={{ color: '#64748B' }}>
-              Okta for AI Agents
-            </span>
+            <div className="flex items-baseline gap-2">
+              <span
+                className="text-[15px] font-bold"
+                style={{ color: '#00297A', letterSpacing: '-0.01em' }}
+              >
+                O4AA Knowledge Hub
+              </span>
+              <span
+                className="text-[12px] font-medium"
+                style={{ color: '#94A3B8' }}
+              >
+                Okta for AI Agents
+              </span>
+            </div>
           </div>
           <span
-            className="text-xs font-semibold px-3 py-1 rounded-full border"
-            style={{ background: '#EFF6FF', borderColor: '#BFDBFE', color: '#1E40AF' }}
+            className="text-[10px] font-semibold px-3 py-1 rounded-md border"
+            style={{
+              background: '#F8FAFC',
+              borderColor: '#E2E8F0',
+              color: '#64748B',
+              fontFamily: "'JetBrains Mono', monospace",
+              letterSpacing: '0.04em',
+            }}
           >
-            SE Internal Reference
+            SE INTERNAL
           </span>
         </header>
 
