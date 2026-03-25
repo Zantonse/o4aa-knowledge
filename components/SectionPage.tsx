@@ -8,7 +8,7 @@ export default function SectionPage({ content }: { content: SectionContent }) {
   const navItem = SLUG_MAP[content.slug];
 
   return (
-    <div className="px-10 py-8" style={{ maxWidth: '760px' }}>
+    <div className="px-10 py-8" style={{ maxWidth: '960px' }}>
       {/* Section header */}
       <div className="flex items-start gap-5 mb-6">
         <div
@@ -36,7 +36,6 @@ export default function SectionPage({ content }: { content: SectionContent }) {
             style={{
               color: '#64748B',
               lineHeight: 1.7,
-              maxWidth: '580px',
             }}
           >
             {content.description}

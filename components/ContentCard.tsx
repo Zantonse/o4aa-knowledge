@@ -77,7 +77,7 @@ export default function ContentCard({ card, index }: { card: ContentCardData; in
       </div>
 
       {/* Card body */}
-      <div className="px-6 py-5" style={{ maxWidth: '680px' }}>
+      <div className="px-6 py-5">
         {card.paragraphs.map((p, i) => {
           const parsed = splitLabel(p);
 
