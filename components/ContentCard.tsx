@@ -1,3 +1,5 @@
+'use client';
+
 import type { ContentCardData } from '@/lib/types';
 
 // Detect paragraphs that start with a label pattern like:
